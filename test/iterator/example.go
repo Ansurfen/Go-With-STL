@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+
 	. "github.com/ansurfen/go-with-stl/algorithm"
 	. "github.com/ansurfen/go-with-stl/utils"
 )
 
 func main() {
-	it := NewIter([]int{9, 8, 7, 6, 5},10)
+	it := NewIter([]int{9, 8, 7, 6, 5}, 10)
 	BubbleSort(it.Data())
 	for it.HasPrev() {
 		fmt.Print(it.Value(), " ")

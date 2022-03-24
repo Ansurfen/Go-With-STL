@@ -6,18 +6,16 @@ import (
 )
 
 type AbstractVec[T Comparable] interface {
+	Iter() *Iterator[T]
 	Size() int
 	Cap() int
 	Empty() bool
 	Clear()
 	Push_Back()
 	Pop_back()
-	Begin() *Iterator[T]
-	End() *Iterator[T]
 	InsertAt()
 	RemoveAt()
 	Erase()
-	Reverse()
 	Resize()
 }
 
@@ -58,18 +56,6 @@ func (v *Vector[T]) Push_Back(val ...T) {
 func (v *Vector[T]) Pop_back() {
 	v.data = v.data[:v.length-1]
 	v.flashParam()
-}
-
-func (v *Vector[T]) Begin() *Iterator[T] {
-	return v.Iter().Begin()
-}
-
-func (v *Vector[T]) End() *Iterator[T] {
-	return v.Iter().End()
-}
-
-func (v *Vector[T]) At(index int) *Iterator[T] {
-	return v.Iter().At(index)
 }
 
 func (v *Vector[T]) Size() int {
