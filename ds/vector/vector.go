@@ -1,4 +1,4 @@
-package ds
+package vector
 
 import (
 	. "github.com/ansurfen/go-with-stl/conf"
@@ -7,8 +7,6 @@ import (
 
 type AbstractVec[T Comparable] interface {
 	Iter() *Iterator[T]
-	Size() int
-	Cap() int
 	Empty() bool
 	Clear()
 	Push_Back()
@@ -56,14 +54,6 @@ func (v *Vector[T]) Push_Back(val ...T) {
 func (v *Vector[T]) Pop_back() {
 	v.data = v.data[:v.length-1]
 	v.flashParam()
-}
-
-func (v *Vector[T]) Size() int {
-	return v.length
-}
-
-func (v *Vector[T]) Cap() int {
-	return v.capcity
 }
 
 func (v *Vector[T]) Empty() bool {

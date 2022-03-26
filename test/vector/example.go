@@ -5,7 +5,7 @@ import (
 
 	. "github.com/ansurfen/go-with-stl/algorithm"
 	. "github.com/ansurfen/go-with-stl/conf"
-	. "github.com/ansurfen/go-with-stl/ds"
+	. "github.com/ansurfen/go-with-stl/ds/vector"
 	. "github.com/ansurfen/go-with-stl/utils"
 )
 
@@ -52,6 +52,14 @@ func (m *Myvector[T]) Reverse() {
 	Reverse(m.vec.Iter().Data())
 }
 
+func (m *Myvector[T]) Size() int {
+	return m.vec.Iter().Size()
+}
+
+func (m *Myvector[T]) Cap() int {
+	return m.vec.Iter().Cap()
+}
+
 func main() {
 	var m Myvector[int]
 	m.vec = NewVector([]int{1, 6, 5})
@@ -61,4 +69,5 @@ func main() {
 	m.Reverse()
 	m.ForEach()
 	fmt.Println("loc: ", m.Search(LinerSearch[int], 1))
+	fmt.Println(m.Size())
 }

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	. "github.com/ansurfen/go-with-stl/conf"
-	. "github.com/ansurfen/go-with-stl/ds"
+	. "github.com/ansurfen/go-with-stl/ds/stack"
 	. "github.com/ansurfen/go-with-stl/utils"
 )
 
@@ -22,10 +22,19 @@ func (m *Mystack[T]) Eachfor() {
 	ForEach(m.stk.Iter().Data(), func(i T) {
 		fmt.Print(i, " ")
 	})
+	fmt.Println()
 }
 
 func (m *Mystack[T]) Max() T {
 	return Max(m.stk.Iter().Data())
+}
+
+func (m *Mystack[T]) Size() int {
+	return m.stk.Iter().Size()
+}
+
+func (m *Mystack[T]) Cap() int {
+	return m.stk.Iter().Cap()
 }
 
 func main() {
@@ -35,4 +44,5 @@ func main() {
 	fmt.Println(m.Max())
 	m.stk.Pop()
 	m.Eachfor()
+	fmt.Println(m.Size())
 }

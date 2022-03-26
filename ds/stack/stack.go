@@ -1,4 +1,4 @@
-package ds
+package stack
 
 import (
 	. "github.com/ansurfen/go-with-stl/conf"
@@ -7,7 +7,6 @@ import (
 
 type AbstractStack[T Comparable] interface {
 	Iter() *Iterator[T]
-	Size() int
 	Clear()
 	Empty() bool
 	Push() T
@@ -35,10 +34,6 @@ func (s *Stack[T]) Iter() (i *Iterator[T]) {
 	}
 	i = NewIter(s.data)
 	return i
-}
-
-func (s *Stack[T]) Size() int {
-	return s.top + 1
 }
 
 func (s *Stack[T]) Clear() {
