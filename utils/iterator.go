@@ -14,6 +14,7 @@ type AbstractIter[T any] interface {
 	Prev() bool
 	HasNext() bool
 	HasPrev() bool
+	SetValue(int, T)
 	At(int) *AbstractIter[T]
 	Begin() *AbstractIter[T]
 	End() *AbstractIter[T]
@@ -127,13 +128,20 @@ func (i *Iterator[T]) Cap() int {
 }
 
 func (i *Iterator[T]) Data() []T {
-	if i.index <= 0 {
-		i.index = 0
-	}
 	if i.index >= len(i.data) {
 		i.index = len(i.data) - 1
 	}
+	if i.index <= 0 {
+		i.index = 0
+	}
 	return i.data[i.index:]
+}
+
+func (i *Iterator[T]) SetValue(index int, val T) {
+	if index >= i.Size() || index < 0 {
+		panic("The index out of range")
+	}
+	i.data[index] = val
 }
 
 func Clone[T any](src T) T {

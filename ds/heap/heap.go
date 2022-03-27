@@ -76,10 +76,10 @@ func (h *Heap[T]) sink(index int) {
 	temp := h.data[index]
 	childIndex := 2*index + 1
 	for h.hasChild(index) {
-		if childIndex+1 < h.length && Compare(h.data[childIndex+1], h.data[childIndex]) == cmpVal {
+		if childIndex+1 < h.length && UpCompare(h.data[childIndex+1], h.data[childIndex]) == cmpVal {
 			childIndex++
 		}
-		if temp == h.data[childIndex] || Compare(temp, h.data[childIndex]) == cmpVal {
+		if temp == h.data[childIndex] || UpCompare(temp, h.data[childIndex]) == cmpVal {
 			break
 		}
 		h.data[index] = h.data[childIndex]
@@ -96,7 +96,7 @@ func (h *Heap[T]) float(index int) {
 	}
 	parentIndex := (index - 1) / 2
 	temp := h.data[index]
-	for index > 0 && Compare(temp, h.data[parentIndex]) == cmpVal {
+	for index > 0 && UpCompare(temp, h.data[parentIndex]) == cmpVal {
 		h.data[index] = h.data[parentIndex]
 		index = parentIndex
 		parentIndex = (parentIndex - 1) / 2
